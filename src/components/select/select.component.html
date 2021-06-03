@@ -1,0 +1,8 @@
+<select
+    [ngClass]="Classes"
+>
+    <option value="" disabled selected>{{placeholder}}</option>
+    <option *ngFor="let option of options; let i = index" [value]="option.value">
+        {{option.name}}
+    </option>
+</select>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -8,7 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent {
 
   constructor() { }
- /**
+
+  /**
    * Is this the principal call to action on the page?
    */
   @Input()
@@ -31,7 +32,7 @@ export class ButtonComponent {
   /** 
    * Component classes
    */
-  public get classes(): string[] {
+  public get Classes(): string[] {
     const buttonClasses: string[] = [];
     const isPrimary = this.primary ? 'bg-blue-400 ring-2 ring-blue-200 focus:outline-none focus:ring-offset-2' : 'bg-gray-400 ring-2 ring-gray-200 focus:outline-none focus:ring-offset-2';
     let currentSize = 'text-base';
