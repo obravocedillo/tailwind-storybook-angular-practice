@@ -3,10 +3,10 @@
     "interfaces": [
         {
             "name": "Option",
-            "id": "interface-Option-d7eb6789c3cd3a9cf64747ad80b07d22",
+            "id": "interface-Option-31d744fba0df544ffef26f9ff629cef0",
             "file": "src/interfaces/Option.ts",
             "type": "interface",
-            "sourceCode": "export interface Option{\n    name: string,\n    value: string\n}",
+            "sourceCode": "export interface Option{\n    name: string,\n    value: string | number\n}",
             "properties": [
                 {
                     "name": "name",
@@ -17,7 +17,7 @@
                 },
                 {
                     "name": "value",
-                    "type": "string",
+                    "type": "string | number",
                     "optional": false,
                     "description": "",
                     "line": 3
@@ -196,7 +196,7 @@
         {
             "name": "InputComponent",
             "id": "component-InputComponent-6ae08203c6fd21855872333441b2ab28",
-            "file": "src/components/Input/input.component.ts",
+            "file": "src/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -342,6 +342,77 @@
                 }
             },
             "templateData": "<select\n    [ngClass]=\"Classes\"\n>\n    <option value=\"\" disabled selected>{{placeholder}}</option>\n    <option *ngFor=\"let option of options; let i = index\" [value]=\"option.value\">\n        {{option.name}}\n    </option>\n</select>"
+        },
+        {
+            "name": "TitleComponent",
+            "id": "component-TitleComponent-ddcadff9391723bf3594b23e740950f6",
+            "file": "src/components/title/title.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-title",
+            "styleUrls": [
+                "./title.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./title.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'Title'",
+                    "description": "<p>Title content</p>\n",
+                    "line": 17,
+                    "type": "string"
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'h3'",
+                    "description": "<p>Variant</p>\n",
+                    "line": 23,
+                    "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-title',\n  templateUrl: './title.component.html',\n  styleUrls: ['./title.component.css']\n})\nexport class TitleComponent{\n\n  constructor() { }\n\n  /**\n   * Title content\n   * @required\n   */\n  @Input()\n  title: string = 'Title';\n\n  /**\n   * Variant\n   */\n  @Input()\n  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = 'h3';\n\n  /** \n   * Component classes\n   */\n  public get Classes(): string[] {\n    const titleClasses: string[] = [];\n\n\n    if(this.variant === 'h1'){\n      titleClasses.push('text-5xl')\n    }else if(this.variant === 'h2'){\n      titleClasses.push('text-4xl')\n    }else if(this.variant === 'h3'){\n      titleClasses.push('text-3xl')\n    }else if(this.variant === 'h4'){\n      titleClasses.push('text-2xl')\n    }else if(this.variant === 'h5'){\n      titleClasses.push('text-xl')\n    }else if(this.variant === 'h6'){\n      titleClasses.push('text-lg')\n    }\n\n    return titleClasses;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./title.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "accessors": {
+                "Classes": {
+                    "name": "Classes",
+                    "getSignature": {
+                        "name": "Classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 28,
+                        "description": "<p>Component classes</p>\n"
+                    }
+                }
+            },
+            "templateData": "<h3 [ngClass]=\"Classes\">{{title}}</h3>"
         }
     ],
     "modules": [
@@ -366,6 +437,9 @@
                         },
                         {
                             "name": "SelectComponent"
+                        },
+                        {
+                            "name": "TitleComponent"
                         }
                     ]
                 },
@@ -452,10 +526,50 @@
                 "defaultValue": "{\n  production: false\n}"
             },
             {
-                "name": "Large",
+                "name": "h1",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button/stories/Button.stories.ts",
+                "file": "src/components/title/stories/Title.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "h2",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/title/stories/Title.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "h3",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/title/stories/Title.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "h4",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/title/stories/Title.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "h5",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/title/stories/Title.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "h6",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/title/stories/Title.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -463,7 +577,7 @@
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/Input/stories/Input.stories.ts",
+                "file": "src/components/button/stories/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -476,6 +590,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/input/stories/Input.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Medium",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -487,7 +609,7 @@
                 "name": "Medium",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/Input/stories/Input.stories.ts",
+                "file": "src/components/select/stories/Select.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -495,7 +617,7 @@
                 "name": "Medium",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/select/stories/Select.stories.ts",
+                "file": "src/components/input/stories/Input.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -534,7 +656,7 @@
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/Input/stories/Input.stories.ts",
+                "file": "src/components/select/stories/Select.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -542,7 +664,7 @@
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/select/stories/Select.stories.ts",
+                "file": "src/components/input/stories/Input.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -558,17 +680,25 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/Input/stories/Input.stories.ts",
-                "type": "Story<InputComponent>",
-                "defaultValue": "(args: InputComponent) => ({\n  props: args,\n})"
+                "file": "src/components/select/stories/Select.stories.ts",
+                "type": "Story<SelectComponent>",
+                "defaultValue": "(args: SelectComponent) => ({\n    props: args\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/select/stories/Select.stories.ts",
-                "type": "Story<SelectComponent>",
-                "defaultValue": "(args: SelectComponent) => ({\n    props: args\n})"
+                "file": "src/components/title/stories/Title.stories.ts",
+                "type": "Story<TitleComponent>",
+                "defaultValue": "(args: TitleComponent) => ({\n    props: args \n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/input/stories/Input.stories.ts",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: args,\n})"
             }
         ],
         "functions": [],
@@ -610,6 +740,64 @@
                     "file": "src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/components/title/stories/Title.stories.ts": [
+                {
+                    "name": "h1",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "h2",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "h3",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "h4",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "h5",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "h6",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/title/stories/Title.stories.ts",
+                    "type": "Story<TitleComponent>",
+                    "defaultValue": "(args: TitleComponent) => ({\n    props: args \n})"
                 }
             ],
             "src/components/button/stories/Button.stories.ts": [
@@ -662,40 +850,6 @@
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: args,\n})"
                 }
             ],
-            "src/components/Input/stories/Input.stories.ts": [
-                {
-                    "name": "Large",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/Input/stories/Input.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Medium",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/Input/stories/Input.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Small",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/Input/stories/Input.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/Input/stories/Input.stories.ts",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: args,\n})"
-                }
-            ],
             "src/components/select/stories/Select.stories.ts": [
                 {
                     "name": "Large",
@@ -728,6 +882,40 @@
                     "file": "src/components/select/stories/Select.stories.ts",
                     "type": "Story<SelectComponent>",
                     "defaultValue": "(args: SelectComponent) => ({\n    props: args\n})"
+                }
+            ],
+            "src/components/input/stories/Input.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/input/stories/Input.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Medium",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/input/stories/Input.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/input/stories/Input.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/input/stories/Input.stories.ts",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: args,\n})"
                 }
             ]
         },
@@ -769,55 +957,6 @@
                 "name": "AppComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/Input/input.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "InputComponent",
-                "coveragePercent": 40,
-                "coverageCount": "2/5",
-                "status": "medium"
-            },
-            {
-                "filePath": "src/components/Input/stories/Input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/Input/stories/Input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Medium",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/Input/stories/Input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/Input/stories/Input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -890,6 +1029,55 @@
                 "status": "low"
             },
             {
+                "filePath": "src/components/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 40,
+                "coverageCount": "2/5",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/components/input/stories/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/input/stories/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Medium",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/input/stories/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/input/stories/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/components/select/select.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -937,6 +1125,85 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "h1",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "h2",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "h3",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "h4",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "h5",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "h6",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/stories/Title.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/title/title.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TitleComponent",
+                "coveragePercent": 50,
+                "coverageCount": "2/4",
+                "status": "medium"
             },
             {
                 "filePath": "src/environments/environment.prod.ts",
