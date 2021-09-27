@@ -14,22 +14,19 @@ export class SelectComponent{
   /**
    * How large should the button be?
    */
-  @Input()
-  size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() size: 'small' | 'medium' | 'large' = 'medium';
 
   /**
    * Placeholder
    *
    * @required
    */
-  @Input()
-  placeholder = 'Select';
+  @Input() placeholder = 'Select';
 
   /**
    * @required
    */
-  @Input()
-  options: Option[] = [];
+  @Input() options: Option[] = [];
 
   public get Classes(): string[] {
     const selectClasses: string[] = [];
